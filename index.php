@@ -10,9 +10,14 @@ class ForbesScraper extends PantherTestCase
     {
         // Start the headless browser
         $client = self::createPantherClient();
+        // Debug - w/o headless browser
+        // $client = self::createPantherClient(['headless' => false]);
 
         // Navigate to the Forbes Real-Time Billionaires page
         $crawler = $client->request('GET', 'https://www.forbes.com/real-time-billionaires/');
+
+        // $client->executeScript('window.scrollTo(0, document.body.scrollHeight);');
+        // sleep(2); // Wait for lazy-loaded content to load
 
         // Wait for JavaScript content to load (adjust timeout if needed)
         $client->waitFor('.table__row', 10); // Adjust selector to target the billionaire rows
@@ -28,7 +33,9 @@ class ForbesScraper extends PantherTestCase
         });
 
         // Print the extracted data
-        print_r($rows);
+        //print_r($rows);
+        file_put_contents('billionaires.json', json_encode($rows, JSON_PRETTY_PRINT));
+        // or Add your MySQL settings & save.
     }
 }
 
