@@ -13,3 +13,5 @@ php index.php
 ```
 
 3. Don't forget to add your MySQL settings.
+
+4. Requirements PHP >= 8.3
