@@ -2,9 +2,9 @@
 
 ## PHP & MySQL Headless browser crawler
 
-1. Install the symfony library:
+1. Install the required symfony library:
 ```php
-composer require symfony/panther
+composer install
 ```
 
 2. Run the index.php:
